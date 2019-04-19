@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ofertas</title>
+	<meta charset="utf-8" />
+	<!--<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+</head>
+<body>
+
+<!--<label id="img">hola</label>
+<label id="link">hola</label>-->
+<label id="tab"></label>
+
+<script>
+var requestURL = 'productos.json';
+var request = new XMLHttpRequest();
+request.open('GET', requestURL);
+request.responseType = 'json';
+request.send();
+
+
+	//console.log("work's 1 ");
+	//console.log("work's 2 ");
+	//console.log("work's 3 ");
+request.onload = function() {
+
+
+	function obtain_data(data){
+		producto = request.response;
+		//anho = producto[data].anho;
+		sku = producto[data].sku;
+		//console.log(valor);
+	}; 
+
+	var demoP = document.getElementById("tab");
+	for (var i = 0; i < 60; i++) {
+		obtain_data(i);
+		demoP.innerHTML = demoP.innerHTML+"<a href='https://get.lider.cl/product/sku/"+sku+"'><img height='100px'src='https://images.lider.cl/wmtcl?source=url[file:/productos/"+sku+"a.jpg]&sink'></a>";
+		//document.getElementById("hola").innerHTML =anho;
+		//document.getElementById("img").innerHTML ="<img height='100px'src='https://images.lider.cl/wmtcl?source=url[file:/productos/"+sku+"a.jpg]&sink'>";
+		//document.getElementById("link").innerHTML ="<a href='https://get.lider.cl/product/sku/"+sku+"'>link</a>";
+	}
+}
+</script>
+</body>
+</html>
